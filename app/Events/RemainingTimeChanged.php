@@ -10,20 +10,18 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserSessionChanged implements ShouldBroadcast
+class RemainingTimeChanged implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $message;
+    public $time;
 
-    public $type;
     /**
      * Create a new event instance.
      */
-    public function __construct($message, $type)
+    public function __construct($time)
     {
-        $this->message = $message;
-        $this->type = $type;
+        $this->time = $time;
     }
 
     /**
@@ -33,10 +31,10 @@ class UserSessionChanged implements ShouldBroadcast
      */
     public function broadcastOn(): array
     {
-        // \Log::debug($this->message);
+        \Log::debug(" Time : {$this->time}");
         // \Log::debug($this->type);
         return [
-            new PrivateChannel('notifications'),
+            new Channel('game'),
         ];
     }
 }

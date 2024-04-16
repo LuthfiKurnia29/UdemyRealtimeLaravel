@@ -78,7 +78,7 @@
         </main>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('build/assets/app-CaNmIVXn.js') }}"></script>
     @stack('scripts')
 </body>
 </html>
